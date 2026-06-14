@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { CloseIcon, HamburgerIcon } from "./Icons";
 
 const NAV_LINKS = [
-  { label: "Home", href: "/" },
+  { label: "Home", href: "/home" },
   { label: "Students", href: "/students" },
   { label: "Alumni", href: "/alumni" },
   { label: "About", href: "/about" },
@@ -73,7 +73,7 @@ export default function Navbar({ loginButtonSlot }: NavbarProps) {
       <div className="flex items-center h-13 px-4 gap-6">
         {/* Logo */}
         <Link
-          href="/"
+          href="/home"
           className="flex items-center gap-2.5 shrink-0 no-underline"
         >
           <div className="relative w-6 h-6">
