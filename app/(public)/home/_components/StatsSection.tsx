@@ -1,7 +1,6 @@
 import { getPublicStats } from "@/lib/services/stats.service";
 
 const publicStats = await getPublicStats();
-
 const STATS = [
   { value: publicStats.data?.totalBatch || "00", label: "Academic Batches" },
   { value: publicStats.data?.currentStudents || "00", label: "Active Enrolments" },

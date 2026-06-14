@@ -44,10 +44,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      
       <body className="min-h-full flex flex-col">
         <BackgroundCanvas />
-        {children}
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );

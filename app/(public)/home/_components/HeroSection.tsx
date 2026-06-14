@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[92vh] text-center px-6 py-24">
+    <section className="relative flex flex-col items-center justify-center min-h-[84vh] text-center px-6 py-20">
       {/* eyebrow */}
       <span className="label mb-5 tracking-widest opacity-80">
         Dept. of Computer Science &amp; Engineering 
