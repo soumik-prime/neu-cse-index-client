@@ -1,12 +1,20 @@
 import { getPublicStats } from "@/lib/services/stats.service";
 
 export default async function StatsSection() {
-  const publicStats = await getPublicStats();
+  let publicStats;
+  
+  try {
+    publicStats = await getPublicStats();
+  } catch (error) {
+    console.error("Failed to fetch public stats:", error);
+    publicStats = { data: null };
+  }
+  
   const STATS = [
-    { value: publicStats.data?.totalBatch || "00", label: "Academic Batches" },
-    { value: publicStats.data?.currentStudents || "00", label: "Active Enrolments" },
-    { value: publicStats.data?.totalAlumni || "00", label: "Graduated Alumni" },
-    { value: publicStats.data?.totalStudents || "00", label: "Total Registrations" },
+    { value: publicStats?.data?.totalBatch || "00", label: "Academic Batches" },
+    { value: publicStats?.data?.currentStudents || "00", label: "Active Enrolments" },
+    { value: publicStats?.data?.totalAlumni || "00", label: "Graduated Alumni" },
+    { value: publicStats?.data?.totalStudents || "00", label: "Total Registrations" },
   ];
   
   return (
