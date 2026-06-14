@@ -1,13 +1,14 @@
 import { getPublicStats } from "@/lib/services/stats.service";
 
-const publicStats = await getPublicStats();
-const STATS = [
-  { value: publicStats.data?.totalBatch || "00", label: "Academic Batches" },
-  { value: publicStats.data?.currentStudents || "00", label: "Active Enrolments" },
-  { value: publicStats.data?.totalAlumni || "00", label: "Graduated Alumni" },
-  { value: publicStats.data?.totalStudents || "00", label: "Total Registrations" },
-];
-export default function StatsSection() {
+export default async function StatsSection() {
+  const publicStats = await getPublicStats();
+  const STATS = [
+    { value: publicStats.data?.totalBatch || "00", label: "Academic Batches" },
+    { value: publicStats.data?.currentStudents || "00", label: "Active Enrolments" },
+    { value: publicStats.data?.totalAlumni || "00", label: "Graduated Alumni" },
+    { value: publicStats.data?.totalStudents || "00", label: "Total Registrations" },
+  ];
+  
   return (
     <section className="relative z-10 px-6 py-0">
       <div className="container mx-auto">
