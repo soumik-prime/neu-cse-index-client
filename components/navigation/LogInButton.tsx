@@ -18,14 +18,17 @@ export default function LogInButton() {
     }
   };
 
+  // Wait for auth to finish loading before showing anything
   if (isLoading) {
     return (
-      <div className="btn btn-outline py-1.5! px-3.5! text-[0.7rem]! opacity-50">
+      <div className="btn btn-outline py-1.5! px-3.5! text-[0.7rem]! opacity-50 flex items-center gap-2">
+        <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-current"></div>
         Loading...
       </div>
     );
   }
 
+  // Show dashboard link if authenticated
   if (isAuthenticated && user) {
     return (
       <div className="flex items-center gap-2">
@@ -45,12 +48,13 @@ export default function LogInButton() {
     );
   }
 
+  // Show login link if not authenticated (only after auth check complete)
   return (
     <Link
       href="/login"
       className="btn btn-outline py-1.5! px-3.5! text-[0.7rem]!"
     >
-      Login <ArrowIcon />
+      Login
     </Link>
   );
 }
