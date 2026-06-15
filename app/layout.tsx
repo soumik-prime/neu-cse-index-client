@@ -4,6 +4,12 @@ import "./globals.css";
 import BackgroundCanvas from "@/components/background/BackgroundCanvas";
 import { AuthProvider } from "@/lib/contexts/AuthContext";
 
+// Cache control - revalidate every 60 seconds
+// export const revalidate = 60;
+
+// Ensure pages are always dynamic and not cached as static
+// export const dynamic = "force-dynamic";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

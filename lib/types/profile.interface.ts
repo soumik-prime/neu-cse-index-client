@@ -1,9 +1,10 @@
 export interface Profile {
+  id?: string;
   userId: string;
   name: string;
-  photo: string;
+  photo?: string;
   batch: number;
-  session: string;
+  session?: string;
   bio?: string;
   gender?: string;
   bloodGroup?: string;
@@ -17,4 +18,9 @@ export interface Profile {
   portfolio?: string;
   city?: string;
   country?: string;
+  visible?: boolean;
+  visibility?: boolean;
+  isVisible?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }

@@ -47,7 +47,7 @@ export default function StudentCard({ profile: p }: { profile: Profile }) {
         {/* 1. The Parent Container must be relative and overflow-hidden */}
         <div className="relative h-full w-full overflow-hidden rounded-t-xl">
           <Image
-            src={p.photo && "/images/placeholder.webp"}
+            src={p.photo ?? "/default-profile.png"}
             alt={p.name}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-[1.03] opacity-85"

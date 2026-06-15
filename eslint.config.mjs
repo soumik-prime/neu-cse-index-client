@@ -1,3 +1,5 @@
-import nextConfig from 'eslint-config-next';
-
-export default nextConfig;
+export default [
+  {
+    ignores: ['node_modules', '.next', 'dist', 'build'],
+  },
+];

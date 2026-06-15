@@ -3,16 +3,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { authService } from "@/lib/services/auth.service";
 import type { AuthUser } from "@/lib/types/auth.interface";
+import { UseAuthReturn } from "../types/userAuth.interface";
 
-interface UseAuthReturn {
-  user: AuthUser | null;
-  isLoading: boolean;
-  isAuthenticated: boolean;
-  error: string | null;
-  login: (email: string, password: string) => Promise<void>;
-  logout: () => Promise<void>;
-  refetch: () => Promise<void>;
-}
 
 /**
  * useAuth Hook - Manage authentication state

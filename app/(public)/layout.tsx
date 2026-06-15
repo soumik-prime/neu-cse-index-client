@@ -1,6 +1,9 @@
 import LogInButton from "@/components/navigation/LogInButton";
 import Navbar from "@/components/navigation/NavBar";
 
+// Cache control - revalidate every 60 seconds
+export const revalidate = 60;
+
 export default function PublicLayout({
   children,
 }: {

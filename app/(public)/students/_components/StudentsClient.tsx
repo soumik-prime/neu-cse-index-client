@@ -134,11 +134,11 @@ function filterProfiles(profiles: DemoProfile[], params: URLSearchParams) {
 }
 
 // ── Component ──────────────────────────────────────────────────────────────────
-export default function StudentsClient() {
+export default function StudentsClient({ profiles }: { profiles: DemoProfile[] }) {
   const rawParams = useSearchParams();
 
   const filtered = useMemo(
-    () => filterProfiles(ALL_PROFILES, rawParams),
+    () => filterProfiles(profiles, rawParams),
     [rawParams]
   );
 
