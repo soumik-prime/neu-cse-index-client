@@ -21,7 +21,7 @@ import Image from "next/image";
  * publicEmail*
  */
 
-export default function StudentCard({ profile: p }: { profile: Profile }) {
+export default function AlumniCard({ profile: p }: { profile: Profile }) {
   const location = [p.city, p.country].filter(Boolean).join(", ");
 
   const socialLinks = [
@@ -48,7 +48,7 @@ export default function StudentCard({ profile: p }: { profile: Profile }) {
         <div className="relative h-full w-full overflow-hidden rounded-t-xl">
           <Image
             // src={p.photo ?? "/default-profile.png"}
-            src="/images/soumik.webp"
+            src='/images/placeholder.webp'
             alt={p.name}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-[1.03] opacity-85"

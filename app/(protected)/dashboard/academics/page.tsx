@@ -21,7 +21,8 @@ export default function AcademicsPage() {
       {/* API: DELETE /academics/:batch */}
 
       <div className="surface p-6 text-text-muted text-sm">
-        [ Academic batches table — connect to GET /academics ]
+        {/* [ Academic batches table — connect to GET /academics ] */}
+        Academic
       </div>
     </div>
   );

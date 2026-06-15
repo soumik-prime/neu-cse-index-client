@@ -2,8 +2,8 @@
 import { redirect } from "next/navigation";
 import getCurrentUser from "@/lib/utils/getCurrentUser";
 import DashboardShell from "./_components/DashboardShell";
-import Navbar from "@/components/navigation/NavBar";
-import LogInButton from "@/components/navigation/LogInButton";
+// import Navbar from "@/components/navigation/NavBar";
+// import LogInButton from "@/components/navigation/LogInButton";
 
 
 const normalizeRole = (role?: string) => {
@@ -35,7 +35,7 @@ export default async function DashboardLayout({
         registrationNo: user.registrationNo,
       }}
     >
-  <Navbar loginButtonSlot={<LogInButton />} />
+  {/* <Navbar loginButtonSlot={<LogInButton />} /> */}
 
       {children}
     </DashboardShell>

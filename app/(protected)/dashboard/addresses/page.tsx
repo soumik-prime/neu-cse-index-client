@@ -20,7 +20,8 @@ export default function AddressesPage() {
       {/* API: DELETE /addresses/delete/:id */}
 
       <div className="surface p-6 text-text-muted text-sm">
-        [ Addresses table — connect to GET /addresses ]
+        {/* [ Addresses table — connect to GET /addresses ] */}
+        Address
       </div>
     </div>
   );

@@ -24,3 +24,15 @@ export interface Profile {
   createdAt?: string;
   updatedAt?: string;
 }
+export interface ProfileResponse {
+  success: boolean;
+  message: string;
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
+  data:
+  Profile[];
+}

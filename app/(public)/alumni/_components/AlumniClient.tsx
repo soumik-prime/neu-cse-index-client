@@ -1,12 +1,12 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import StudentCard from "./StudentCard";
 import FilterBar from "./FilterBar";
 import Pagination from "./Pagination";
 import { Profile } from "@/lib/types/profile.interface";
+import AlumniCard from "./AlumniCard";
 
-export default function StudentsClient({
+export default function AlumniClient({
   profiles,
   meta,
   batches = [],
@@ -36,7 +36,7 @@ export default function StudentsClient({
         <p className="label mb-2">NEU CSE Index</p>
 
         <h1 className="m-0 text-[clamp(1.8rem,4vw,3rem)] text-[#d4eae8]">
-          Student Directory
+          Alumni Directory
         </h1>
 
         <p className="mt-2 text-[13px] text-[#5a8a86]">
@@ -59,7 +59,7 @@ export default function StudentsClient({
         ) : (
           <div className="mt-6 grid grid-cols-2 sm:grid-cols-[repeat(auto-fill,minmax(220px,2fr))] gap-2 sm:gap-8">
             {profiles.map((p) => (
-              <StudentCard key={p.userId} profile={p} />
+              <AlumniCard key={p.userId} profile={p} />
             ))}
           </div>
         )}

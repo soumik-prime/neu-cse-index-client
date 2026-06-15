@@ -14,7 +14,7 @@ export default function ProfilePage() {
         </p>
       </div>
 
-      <ProfileForm />
+      {/* <ProfileForm /> */}
     </div>
   );
 }

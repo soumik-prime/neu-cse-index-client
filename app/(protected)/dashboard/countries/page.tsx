@@ -21,7 +21,8 @@ export default function CountriesPage() {
       {/* API: DELETE /countries/delete/:iso2 */}
 
       <div className="surface p-6 text-text-muted text-sm">
-        [ Countries table — connect to GET /countries ]
+        {/* [ Countries table — connect to GET /countries ] */}
+        Country
       </div>
     </div>
   );

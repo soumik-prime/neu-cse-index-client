@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { apiClient } from "./api-Client";
-import type { Profile } from "@/lib/types/profile.interface";
+import type { Profile, ProfileResponse } from "@/lib/types/profile.interface";
 
 const getProfiles = async (qureyParams: URLSearchParams, options?: RequestInit) => {
-  const response = await apiClient.get<{ data: any}>("/profiles?" + qureyParams, options);
-  return response.data;
+  const response = await apiClient.get<ProfileResponse>("/profiles?" + qureyParams, options);
+  console.log(response);
+  return response
 };
 
 const getCurrentUserProfile = async (options?: RequestInit) => {

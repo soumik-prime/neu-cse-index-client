@@ -21,7 +21,8 @@ export default function HigherStudiesPage() {
       {/* API: DELETE /higherStudy/delete/:id */}
 
       <div className="surface p-6 text-text-muted text-sm">
-        [ Higher study records — connect to /higherStudy ]
+        {/* [ Higher study records — connect to /higherStudy ] */}
+        Higher study
       </div>
     </div>
   );

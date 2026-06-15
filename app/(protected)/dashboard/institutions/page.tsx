@@ -21,7 +21,8 @@ export default function InstitutionsPage() {
       {/* API: DELETE /institutions/delete/:id */}
 
       <div className="surface p-6 text-text-muted text-sm">
-        [ Institutions table — connect to GET /institutions ]
+        {/* [ Institutions table — connect to GET /institutions ] */}
+        Institutions
       </div>
     </div>
   );
