@@ -1,13 +1,8 @@
 import * as z from "zod";
 import { AuthSchema } from "../schemas/auth.schema";
 
-export enum UserRole {
-    SUPERADMIN = "superadmin",
-    ADMIN = "admin",
-    USER = "user",
-}
 
-
+export type UserRole = z.infer<typeof AuthSchema.UserRole>;
 export type AuthResponseWithData = z.infer<typeof AuthSchema.authResponseSchemaWithData>;
 export type AuthResponseWithoutData = z.infer<typeof AuthSchema.authResponseSchemaWithoutData>;
 export type AuthUser = z.infer<typeof AuthSchema.authUserSchema>;

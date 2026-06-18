@@ -1,6 +1,11 @@
 import * as z from "zod";
-import { UserRole } from "../types/auth.interface";
 import { ApiSchema } from "./api.schema";
+
+const UserRole = z.enum([
+  "superadmin",
+  "admin",
+  "user",
+]);
 
 // Login Schema
 const loginSchema = z.object({
@@ -49,7 +54,7 @@ const authUserSchema = z.object({
   id: z.string(),
   email: z.email(),
   name: z.string(),
-  role: z.enum(UserRole),
+  role: UserRole,
   image: z.url(),
   needPasswordChange: z.boolean(),
   isLocked: z.boolean().optional(),
@@ -63,6 +68,7 @@ const authResponseSchemaWithData = ApiSchema.apiResponseSchema(authUserSchema);
 const authResponseSchemaWithoutData = ApiSchema.baseApiResponseSchema;
 
 export const AuthSchema = {
+  UserRole,
   loginSchema,
   registerUserSchema,
   registerAdminSchema,

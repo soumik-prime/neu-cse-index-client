@@ -3,14 +3,12 @@ import { apiClient } from "../utils/api-Client";
 
 const registerUser = async (
 	payload: RegisterUserFormData,
-	options?: RequestInit
 ) => {
 	return await apiClient.post<AuthResponseWithData, RegisterUserFormData>(
 		'/auth/register',
 		payload,
 		{
 			cache: "no-store",
-			...options
 		}
 	);
 };
