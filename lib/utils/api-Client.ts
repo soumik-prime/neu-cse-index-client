@@ -2,7 +2,7 @@ import * as z from "zod";
 import { ApiError } from "./AppError";
 
 const backendUrl = () => {
-  const url = z.url().parse(process.env.NEXT_PUBLIC_BACKEND_URL);
+  const url = z.url().parse(process.env.BACKEND_URL);
   if (!url) throw new ApiError(500, "NEXT_PUBLIC_BACKEND_URL is not defined or invalid");
   else return url;
 }

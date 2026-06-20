@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+:root {
+  /* ── Primary Brand ── */
+  --neu-green:          #02644A;   /* primary CTA, logo accent */
+  --neu-green-hover:    #00916A;   /* hover / active states */
+  --neu-emerald:        #10B981;   /* icon highlights, badges */
+  --neu-emerald-light:  #D1FAE5;   /* soft backgrounds, tags */
+
+  /* ── UI Surface ── */
+  --neu-white:          #FFFFFF;
+  --neu-gray-50:        #F8FAFC;
+  --neu-gray-100:       #F1F5F9;
+  --neu-gray-200:       #E2E8F0;
+  --neu-gray-300:       #CBD5E1;
+  --neu-gray-500:       #64748B;
+  --neu-gray-600:       #475569;
+  --neu-gray-700:       #334155;
+  --neu-gray-800:       #1E293B;   /* nav background via-slate-800 */
+  --neu-gray-900:       #0F172A;   /* footer background */
+
+  /* ── Nav Gradient ── */
+  --neu-nav-from:       #0F172A;   /* from-slate-900 */
+  --neu-nav-via:        #1E293B;   /* via-slate-800 */
+  --neu-nav-to:         #0F172A;   /* to-slate-900 */
+
+  /* ── Accent / Status ── */
+  --neu-indigo:         #6366F1;   /* notice board accent */
+  --neu-blue-light:     #EFF6FF;   /* stat icon bg */
+  --neu-red:            #DC2626;   /* important notice */
+  --neu-yellow:         #CA8A04;   /* on-leave badge */
+  --neu-purple:         #9333EA;   /* ex-chairman badge */
+
+  /* ── Typography ── */
+  --neu-font-sans: var(--font-nunito-sans);
+
+  /* ── Spacing Scale ── */
+  --neu-radius-sm:  0.5rem;
+  --neu-radius-md:  0.75rem;
+  --neu-radius-lg:  1rem;
+  --neu-radius-xl:  1.5rem;
+  --neu-radius-2xl: 1.75rem;
+
+  /* ── Shadow ── */
+  --neu-shadow-card: 0 1px 3px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.05);
+  --neu-shadow-nav:  0 4px 24px rgba(0,0,0,.25);
+  --neu-shadow-lg:   0 10px 40px rgba(2,100,74,.15);
+}
+
+/* ── Base Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--neu-font-sans);
+}
+
+body {
+  background-color: var(--neu-gray-100);
+  color: var(--neu-gray-800);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Utility: brand color classes ── */
+.bg-neu-green         { background-color: var(--neu-green); }
+.bg-neu-green-hover   { background-color: var(--neu-green-hover); }
+.text-neu-green       { color: var(--neu-green); }
+.border-neu-green     { border-color: var(--neu-green); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar          { width: 6px; }
+::-webkit-scrollbar-track    { background: var(--neu-gray-100); border-radius: 3px; }
+::-webkit-scrollbar-thumb    { background: linear-gradient(180deg, var(--neu-green), var(--neu-emerald)); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--neu-emerald), var(--neu-green)); }
+
+/* ── Line-clamp utilities ── */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+}
+
+/* ── Focus ring ── */
+/* :focus-visible {
+  outline: 2px solid var(--neu-green);
+  outline-offset: 2px;
+} */
+
+
+/* ── Reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* ── Scrolling notice animation ── */
+@keyframes neu-marquee {
+  0%   { transform: translate3d(100vw, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+.neu-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: neu-marquee 32s linear infinite;
+  will-change: transform;
+}
+.neu-marquee:hover { animation-play-state: paused; }
