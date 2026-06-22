@@ -5,14 +5,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import { useAuthActionState } from "../../../lib/hooks/useAuthActionState";
-import { LoginFormData } from "../../../lib/types/auth.interface";
 import { AuthSchema } from "../../../lib/schemas/auth.schema";
-import { loginAction } from "../../../lib/action/auth.action";
 import AuthPageHeader from "../../../components/auth/AuthPageHeader";
 import AlertBox from "../../../components/auth/AlertBox";
 import AuthInput from "../../../components/auth/AuthInput";
 import AuthBtn from "../../../components/auth/AuthBtn";
 import * as z from "zod";
+import { loginAction } from "../../../lib/action/auth.action";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -33,7 +32,7 @@ export default function LoginPage() {
     }
   }, [state, router]);
 
-  function validate(payload: LoginFormData) {
+  function validate(payload: { email: string; password: string }) {
     const result = AuthSchema.loginSchema.safeParse(payload);
 
     if (result.success) {
@@ -61,11 +60,11 @@ export default function LoginPage() {
   function handleSubmit(ev: React.SubmitEvent) {
     ev.preventDefault();
 
-    const payload: LoginFormData = { email, password };
+    const payload = { email, password };
     if (!validate(payload)) return;
 
     startTransition(() => {
-      dispatch(payload);
+      dispatch({ email, password });
     });
   }
 

@@ -307,7 +307,7 @@ export default function Sidebar({
           <button
             type="submit"
             disabled={isPending}
-            className="flex items-center hover:cursor-pointer gap-1.5 text-[12px] text-rose-700 hover:text-rose-800 transition-colors w-full py-1 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center hover:cursor-pointer gap-1.5 text-[12px] text-gray-500/80 hover:text-gray-800 transition-colors w-full py-1 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isPending ? (
               <>

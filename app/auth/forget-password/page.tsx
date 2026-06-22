@@ -2,11 +2,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { sendOtpAction } from "../_actions/passwordReset";
 import AuthPageHeader from "../../../components/auth/AuthPageHeader";
 import AlertBox from "../../../components/auth/AlertBox";
 import AuthInput from "../../../components/auth/AuthInput";
 import AuthBtn from "../../../components/auth/AuthBtn";
+import { forgotPasswordAction } from "../../../lib/action/auth.action";
 
 export default function ForgetPasswordPage() {
   const router = useRouter();
@@ -26,13 +26,13 @@ export default function ForgetPasswordPage() {
     if (!validate()) return;
     setLoading(true); setError("");
     try {
-      const fd = new FormData();
-      fd.set("email", email);
-      const res = await sendOtpAction(fd);
-      if (res.ok) {
+
+      if(email === "") return;
+      const res = await forgotPasswordAction({ email });
+      if (res.success) {
         router.push("/auth/verify-otp");
       } else {
-        setError(res.error ?? "Failed to send OTP.");
+        setError(res.message ?? "Failed to send OTP.");
       }
     } finally {
       setLoading(false);

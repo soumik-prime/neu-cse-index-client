@@ -1,3 +1,5 @@
+import { IApiResponse } from "./api.interface";
+
 export type ActionResult<T = undefined> =
-  | { success: true; message?: string; data: T }
-  | { success: false; message: string; fieldErrors?: Record<string, string[]> };
+  | IApiResponse<T>
+  | (IApiResponse<undefined> & { fieldErrors?: Record<string, string[]> });

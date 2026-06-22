@@ -1,8 +1,10 @@
 import { LocationApi } from "../api/location.api";
+import { LocationSchema } from "../schemas/location.schema";
 
 const getAllLocationGrouped = async () => {
-  const result = await LocationApi.getAllLocationGrouped();
-  return result.data ?? null;
+  return LocationSchema.getLocationGroupedApiResponseSchema.parse(
+    await LocationApi.getAllLocationGrouped()
+  );
 }
 
 export const LocationService = {

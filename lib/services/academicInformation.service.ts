@@ -1,8 +1,10 @@
 import { AcademicInformationApi } from "../api/academicInformation.api";
+import { AcademicInformationSchema } from "../schemas/academicInformation.schema";
 
 const getAcademicBatchList = async () => {
-  const result = await AcademicInformationApi.getBatchList();
-  return result.data ?? null;
+  return AcademicInformationSchema.academicBatchListApiResponseSchema.parse(
+    await AcademicInformationApi.getBatchList()
+  );
 };
 
 export const AcademicInformationService = {

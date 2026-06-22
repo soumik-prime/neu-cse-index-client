@@ -1,10 +1,10 @@
 import { UserApi } from "../api/user.api";
-import { ApiError } from "../utils/AppError";
+import { UserSchema } from "../schemas/user.schema";
 
 const getOwnUserDetails = async() => {
-  const result = await UserApi.getOwnUserDetails();
-  if(result.success && result.data) return result.data;
-  throw new ApiError(result.status ?? 500, result.message ?? "Failed to get user details");
+  return UserSchema.getUserApiResponseSchema.parse(
+    await UserApi.getOwnUserDetails()
+  );
 }
 
 export const UserService = {
