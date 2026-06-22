@@ -1,3 +1,5 @@
+"use client";
+
 import { IconCircleCheck, IconX } from "@tabler/icons-react";
 
 export default function Toast({ message, onClose }: { message: string; onClose: () => void }) {

@@ -16,8 +16,8 @@ interface AddressProfile {
 }
 
 const DEFAULT_PROFILE: AddressProfile = {
-  presentCountry: "",
-  presentCity: "",
+  presentCountry: "Bangladesh",
+  presentCity: "Dhaka",
   permCountry: "",
   permCity: "",
 };

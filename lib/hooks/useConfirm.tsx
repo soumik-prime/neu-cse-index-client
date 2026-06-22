@@ -1,23 +1,28 @@
 "use client";
-import { useState } from 'react';
-import ConfirmModal from '../../components/dashboard/ConfirmModal';
 
-export default function useConfirm() {
-  const [state, setState] = useState<{
-    open: boolean;
-    title: string;
-    message: string;
-    confirmLabel: string;
-    variant: "danger" | "primary";
-    onConfirm: () => void;
-  }>({
+import { useState } from "react";
+import ConfirmModal from "../../components/dashboard/ConfirmModal";
+
+interface ConfirmState {
+  open: boolean;
+  title: string;
+  message: string;
+  confirmLabel: string;
+  variant: "danger" | "primary";
+  onConfirm: () => void;
+}
+
+const initialState: ConfirmState = {
     open: false,
     title: "",
     message: "",
     confirmLabel: "Confirm",
     variant: "danger",
     onConfirm: () => {},
-  });
+  };
+
+export default function useConfirm() {
+  const [state, setState] = useState<ConfirmState>(initialState);
 
   function confirm(opts: {
     title: string;
@@ -37,7 +42,7 @@ export default function useConfirm() {
   const modal = state.open ? (
     <ConfirmModal
       {...state}
-      onClose={() => setState((s) => ({ ...s, open: false }))}
+      onClose={() => setState(initialState)}
     />
   ) : null;
 

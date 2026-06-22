@@ -31,13 +31,13 @@ export default function DashboardShell({
         </main>
 
         {/* Developer credit — fixed to bottom-right corner */}
-        <div className="hidden lg:absolute bottom-0 right-1.5 z-10 lg:flex items-center gap-1.5 text-xs text-gray-500/80 bg-white/30 backdrop-blur-2xl px-1">
+        <div className="hidden lg:absolute bottom-0 right-1.5 z-10 lg:flex items-center gap-1.5 text-xs text-gray-400/80 bg-white/30 backdrop-blur-2xl px-1">
           <span>Built by</span>
           <a
             href="https://github.com/soumik-prime"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-[#0b8274b7] hover:text-[#0b8274] transition-colors duration-200"
+            className="font-medium text-[#0b827498] hover:text-[#0b8274] transition-colors duration-200"
           >
             Md. Samiul Islam Soumik
           </a>

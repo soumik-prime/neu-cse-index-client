@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  IconArrowLeft,
   IconUser,
   IconLink,
   IconSchool,
@@ -14,11 +13,15 @@ import {
   IconDatabase,
   IconShieldLock,
   IconId,
+  IconLogout,
 } from "@tabler/icons-react";
 import type { Icon } from "@tabler/icons-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Avatar from "../../../components/ui/Avater";
+import { useAuthActionState } from "../../../lib/hooks/useAuthActionState";
+import { logoutAction } from "../../../lib/action/auth.action";
+import { useEffect } from "react";
 
 // ── types ─────────────────────────────────────────────────
 type TRole = "USER" | "ADMIN" | "SUPERADMIN";
@@ -177,38 +180,6 @@ const CATEGORY_COLORS: Record<
   },
 };
 
-// ── avatar ────────────────────────────────────────────────
-// function Avatar({
-//   name,
-//   photo,
-//   size = 36,
-// }: {
-//   name: string;
-//   photo?: string;
-//   size?: number;
-// }) {
-//   if (photo) {
-//     return (
-//       <Image
-//         src={photo}
-//         alt={name}
-//         width={size}
-//         height={size}
-//         className="rounded-full object-cover"
-//       />
-//     );
-//   }
-
-//   return (
-//     <div
-//       className="rounded-full bg-[#02644A] text-white flex items-center justify-center font-semibold"
-//       style={{ width: size, height: size }}
-//     >
-//       {name.charAt(0).toUpperCase()}
-//     </div>
-//   );
-// }
-
 // ── sidebar ───────────────────────────────────────────────
 export default function Sidebar({
   open,
@@ -216,7 +187,7 @@ export default function Sidebar({
   user = {
     name: "Md. Samiul Islam Soumik",
     email: "soumik.shu@neu.ac.bd",
-    role: "USER",
+    role: "SUPERADMIN",
     image: "",
   },
 }: {
@@ -224,8 +195,15 @@ export default function Sidebar({
   onClose: () => void;
   user?: TUser;
 }) {
+  const router = useRouter();
   const pathname = usePathname();
   const navCategories = NAV_STRUCTURE[user.role];
+  const [state, dispatch, isPending] = useAuthActionState(logoutAction);
+  useEffect(() => {
+      if (state?.success) {
+        router.push("/auth/login");
+      }
+    }, [state, router]);
 
   return (
     <aside
@@ -318,20 +296,60 @@ export default function Sidebar({
 
       {/* Footer */}
       <div className="px-3.5 py-2.5 border-t border-gray-100 space-y-2 lg:space-y-0">
-        <Link
+        {/* <Link
           href="/"
-          className="flex items-center gap-1.5 text-[12px] text-gray-500 hover:text-[#02644A] transition-colors"
+          className="flex items-center gap-1.5 text-[12px] text-gray-500 hover:text-[#02644A] transition-colors py-1"
         >
           <IconArrowLeft size={16} /> Back to site
-        </Link>
+        </Link> */}
 
-        <div className="flex lg:hidden items-center gap-1.5 text-[10px] text-gray-500/80">
+        <form action={dispatch}>
+          <button
+            type="submit"
+            disabled={isPending}
+            className="flex items-center hover:cursor-pointer gap-1.5 text-[12px] text-rose-700 hover:text-rose-800 transition-colors w-full py-1 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isPending ? (
+              <>
+                <svg
+                  className="animate-spin w-4 h-4 shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  />
+                </svg>
+                Logging out…
+              </>
+            ) : (
+              <>
+                <IconLogout size={16} /> Log out
+              </>
+            )}
+          </button>
+          {/* {state && !state?.success && (
+            <p className="text-[11px] text-red-500 mt-1">{state.message}</p>
+          )} */}
+        </form>
+
+        <div className="flex lg:hidden items-center gap-1.5 text-[10px] text-gray-300">
           <span>Built by</span>
           <a
             href="https://github.com/soumik-prime"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-[#0b8274b7] hover:text-[#0b8274] transition-colors duration-200"
+            className="font-medium hover:text-gray-400 transition-colors duration-200"
           >
             Md. Samiul Islam Soumik
           </a>

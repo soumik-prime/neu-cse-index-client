@@ -3,6 +3,7 @@ import * as z from "zod";
 const baseApiResponseSchema = z.object({
   status: z.coerce.number(),
   success: z.boolean(),
+  needPasswordChange: z.boolean().optional(),
   message: z.string().optional(),
 });
 

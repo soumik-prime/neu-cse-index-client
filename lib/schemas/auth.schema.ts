@@ -25,7 +25,6 @@ const registerUserSchema = z.object({
 const registerAdminSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(100),
   email: z.email("Invalid email format"),
-  registrationNo: z.string().min(1, "Registration number is required").max(25),
 });
 
 // Change Password Schema
